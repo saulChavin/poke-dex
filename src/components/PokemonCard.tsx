@@ -27,7 +27,7 @@ export const PokemonCard = ({ name }: PokemonCardProps) => {
                 height={70}
                 src={pokemon?.sprites?.other?.['official-artwork']?.front_default} />
             <div className='flex flex-col flex-1 items-center justify-center'>
-                <h1 className='text-xl'>{pokemon?.name}</h1>
+                <h1 className='text-xl '>{pokemon?.name}</h1>
                 <p>
                     {pokemon?.types.map((obj, index) => {
                         return <small key={`${obj.type.name}-${index}`}>
