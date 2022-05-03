@@ -1,13 +1,14 @@
 import { PokemonList } from './components/PokemonList';
 // import './App.css';
+import { PokemonView } from './views/PokemonView';
 
 
 function App() {
 
   return (
-    <div className="App">
+    <div className="bg-slate-800">
       <h1>Poke App</h1>
-      <PokemonList />
+      <PokemonView />
     </div>
   );
 }
