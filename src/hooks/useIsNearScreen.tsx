@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
 
 interface Props {
-    distance: string;
-    externalRef: React.RefObject<HTMLInputElement>;
-    once: boolean;
+    distance?: string;
+    externalRef: React.MutableRefObject<HTMLInputElement | null | undefined> | null;
+    once?: boolean;
 }
 
 export default function useNearScreen({ distance = '100px', externalRef, once = true }: Props) {
@@ -28,6 +28,7 @@ export default function useNearScreen({ distance = '100px', externalRef, once = 
         Promise.resolve(
             typeof IntersectionObserver !== 'undefined'
                 ? IntersectionObserver
+                //@ts-ignore
                 : import('intersection-observer')
         ).then(() => {
             observer = new IntersectionObserver(onChange, {
