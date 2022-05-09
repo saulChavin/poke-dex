@@ -12,7 +12,7 @@ export const PokemonList = () => {
     const [loading, setLoading] = useState(true);
     const visRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const [page, setPage] = useState(1);
-    const { isNearScreen, } = useIsNearScreen({ externalRef: loading ? null : visRef });
+    const { isNearScreen, } = useIsNearScreen({ externalRef: loading ? null : visRef, once: false });
 
     const loadPage = async (page: number) => {
         try {
@@ -27,17 +27,19 @@ export const PokemonList = () => {
         } catch (err) {
             console.log(err);
         } finally {
-            setTimeout(() => setLoading(false), 800);
+            setTimeout(
+                () => setLoading(false), 800);
+                setPage(page);
         }
     }
 
     useEffect(() => {
-        loadPage(1);
+        loadPage(page);
     },[]);
 
     useEffect(() => {
-        isNearScreen && loadPage(2);
-    },[isNearScreen, setPage]);
+        isNearScreen && loadPage(page + 1 );
+    },[isNearScreen]);
 
     return (
         <div className='grid grid-cols-3 gap-16 p-16'>
