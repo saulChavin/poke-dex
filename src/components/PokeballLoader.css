@@ -1,6 +1,6 @@
 .wrapper {
-    position: absolute;
-    top: 90%;
+    position: relative;
+    top: calc(50% - 30px);
 }
 
 .pokeball {

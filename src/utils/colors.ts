@@ -18,7 +18,7 @@ const typesClass = {
     steel: 'bg-indigo-100',
     ghost: 'bg-purple-100',
     dark: 'bg-gray-200',
-    default: 'bg-purple-500',
+    default: 'bg-stone-100',
 }
 
 

@@ -3,7 +3,7 @@ import { PokemonList } from '../components/PokemonList'
 
 export const PokemonView = () => {
     return (
-        <div className='container flex mx-auto justify-center'>
+        <div className='container sm:flex mx-auto justify-center'>
             <PokemonList />
         </div>
 
