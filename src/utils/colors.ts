@@ -1,17 +1,27 @@
+import { pokeType } from "../interfaces/typesInterface";
+
+const typesClass = {
+    grass: 'bg-green-50',
+    fire: 'bg-red-100',
+    water: 'bg-sky-50',
+    dragon: 'bg-blue-100',
+    ice: 'bg-cyan-50',
+    bug: 'bg-lime-50',
+    normal: 'bg-orange-50',
+    poison: 'bg-purple-50',
+    electric: 'bg-yellow-50',
+    ground: 'bg-stone-50',
+    rock: 'bg-amber-100',
+    fairy: 'bg-pink-50',
+    fighting: 'bg-rose-50',
+    psychic: 'bg-fuchsia-50',
+    steel: 'bg-indigo-100',
+    ghost: 'bg-purple-100',
+    dark: 'bg-gray-200',
+    default: 'bg-purple-500',
+}
 
 
-export const getGradientByType = (type: string | undefined): string => {
-    switch(type) {
-        case 'grass': return 'bg-green-50';
-        case 'fire': return 'bg-red-100';
-        case 'water': return 'bg-sky-50';
-        case 'bug': return 'bg-lime-50';
-        case 'normal': return 'bg-orange-50';
-        case 'poison': return 'bg-purple-50';
-        case 'electric': return 'bg-yellow-50';
-        case 'ground': return 'bg-stone-50';
-        case 'fairy': return 'bg-pink-50';
-        default: return 'bg-purple-400';
-    }
-
+export const getGradientByType = (type: pokeType = 'default'): string => {
+    return typesClass[type] ?? typesClass['default'];
 }
