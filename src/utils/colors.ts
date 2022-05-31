@@ -22,6 +22,6 @@ const typesClass = {
 }
 
 
-export const getGradientByType = (type: pokeType = 'default'): string => {
+export const getColorByType = (type: pokeType = 'default'): string => {
     return typesClass[type] ?? typesClass['default'];
 }

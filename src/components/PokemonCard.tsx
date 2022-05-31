@@ -1,33 +1,33 @@
-import { useState } from 'react';
 import { Pokemon } from '../interfaces/pokemonInterface';
-import { getGradientByType } from '../utils/colors';
+import { getColorByType } from '../utils/colors';
 import { pokeType } from '../interfaces/typesInterface';
 import { getTypeIcon } from '../utils/icons';
-import { useEffect } from 'react';
-import { getPokemon } from '../api/pokemon.service';
 import { PokeballLoader } from './PokeballLoader';
+import './PokemonCard.css';
+import { useEffect } from 'react';
 
 
 
 interface PokemonCardProps {
-    pokeName: string;
+    pokemon: Pokemon;
 }
 
-export const PokemonCard = ({ pokeName }: PokemonCardProps) => {
+export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
 
-    const [{ id, name, types, sprites, }, setPokemon] = useState<Pokemon>({} as Pokemon);
+    const { id, name, sprites, types, height, abilities } = pokemon;
 
     useEffect(() => {
-        getPokemon(pokeName).then((res: Pokemon) => {
-            setPokemon(res);
+        types.map(({type}) => {
+            fetch(`${type.url}`).then(res => res.json()).then(console.log)
         })
     }, [])
 
+
+    console.log(pokemon);
     return (
-        <div id='card' className={`${getGradientByType(types?.[0].type.name as pokeType)} flex flex-col items-center xs:shadow-none sm:shadow-lg sm:rounded-md xs:w-full sm:w-64 sm:h-64 p-2 xs:border-b-gray-900` }>
-            {!Boolean(id)
-                ? <PokeballLoader />
-                : <>
+        <div id='poke-card' >
+            <div className={`inner-card ${getColorByType(types?.[0].type.name as pokeType)} flex flex-col items-center shadow-lg sm:rounded-md w-64 h-64 p-2 xs:border-b-gray-900 m-4`}>
+                <div className='card-front w-full'>
                     <header className='flex justify-between items-center w-full'>
                         <div className='flex'>
                             {types.map(({ type }) =>
@@ -44,15 +44,23 @@ export const PokemonCard = ({ pokeName }: PokemonCardProps) => {
                     </header>
 
                     <img
+                        className='m-auto'
                         width={152}
                         height={152}
                         src={sprites.other?.['official-artwork'].front_default} />
                     <footer className='flex flex-col flex-1 items-center justify-center'>
                         <h1 className='capitalize text-2xl font-bold text-gray-700'>{name}</h1>
                     </footer>
-                </>
-            }
-
+                </div>
+                <div className='card-back absolute'>
+                    <small>abillities</small>
+                    {
+                        abilities.map(item => (
+                            <li>{item.ability.name}</li>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     )
 }
