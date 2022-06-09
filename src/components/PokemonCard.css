@@ -1,0 +1,24 @@
+#poke-card .inner-card {
+    transition: transform .7s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+#poke-card:hover .inner-card,
+#poke-card:focus .inner-card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+        backface-visibility: hidden;
+}
+
+.card-front {
+    z-index: 2;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
