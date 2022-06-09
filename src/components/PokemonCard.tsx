@@ -26,7 +26,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
     console.log(pokemon);
     return (
         <div id='poke-card' >
-            <div className={`inner-card ${getColorByType(types?.[0].type.name as pokeType)} flex flex-col items-center shadow-lg sm:rounded-md w-64 h-64 p-2 xs:border-b-gray-900 m-4`}>
+            <div className={`inner-card ${getColorByType(types?.[0].type.name as pokeType)} flex flex-col items-center justify-center shadow-lg sm:rounded-md w-64 h-64 p-2 xs:border-b-gray-900 m-4`}>
                 <div className='card-front w-full'>
                     <header className='flex justify-between items-center w-full'>
                         <div className='flex'>
@@ -52,11 +52,11 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
                         <h1 className='capitalize text-2xl font-bold text-gray-700'>{name}</h1>
                     </footer>
                 </div>
-                <div className='card-back absolute'>
-                    <small>abillities</small>
+                <div className='card-back absolute justify-center align-center'>
+                    <h3 className='capitalize font-bold'>abillities</h3>
                     {
                         abilities.map(item => (
-                            <li>{item.ability.name}</li>
+                            <small className='italic'>{item.ability.name}<br/></small>
                         ))
                     }
                 </div>

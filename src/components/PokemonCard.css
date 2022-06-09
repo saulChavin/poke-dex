@@ -4,8 +4,6 @@
     perspective: 1000px;
 }
 
-
-
 #poke-card:hover .inner-card,
 #poke-card:focus .inner-card {
   transform: rotateY(180deg);
